@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Directory Sites Engine &amp; Sponsor Desk Simulator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #0F172A; color: #E2E8F0; min-height: 100vh; display: flex; flex-direction: column; }
+    
+    /* Top Navbar */
+    .navbar { height: 60px; background: #1E293B; border-bottom: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 16px; color: #FFFFFF; }
+    .brand-icon { width: 32px; height: 32px; background: #0D9488; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; }
+    .nav-tabs { display: flex; gap: 6px; }
+    .nav-btn { background: transparent; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #94A3B8; cursor: pointer; }
+    .nav-btn.active, .nav-btn:hover { background: #334155; color: #38BDF8; }
+    .btn-promote { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+
+    /* Main Container */
+    .main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 24px; display: flex; flex-direction: column; gap: 24px; }
+
+    /* Hero Banner */
+    .hero-box { background: linear-gradient(135deg, #1E293B, #0F172A); border: 1px solid #334155; border-radius: 12px; padding: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .hero-text h1 { font-size: 24px; font-weight: 800; color: #FFFFFF; margin-bottom: 6px; }
+    .hero-text p { font-size: 14px; color: #94A3B8; }
+    .hero-badge { background: rgba(13, 148, 136, 0.2); border: 1px solid #0D9488; color: #2DD4BF; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+    /* Directory Card Grid */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 18px; }
+    .dir-card { background: #1E293B; border: 1px solid #334155; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.2s; position: relative; }
+    .dir-card:hover { transform: translateY(-2px); border-color: #0D9488; }
+    .dir-card.featured { border: 2px solid #F59E0B; background: linear-gradient(180deg, rgba(245, 158, 11, 0.05), #1E293B); }
+    .featured-tag { position: absolute; top: 12px; right: 12px; background: #F59E0B; color: #78350F; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+    .dir-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .dir-title { font-size: 16px; font-weight: 700; color: #FFFFFF; }
+    .dir-specialty { display: inline-block; background: #0F172A; color: #38BDF8; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; margin-top: 4px; }
+    .dir-desc { font-size: 12px; color: #94A3B8; line-height: 1.5; }
+    .dir-meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #334155; padding-top: 12px; font-size: 11px; color: #64748B; }
+    .btn-action { background: #0D9488; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 11px; cursor: pointer; }
+    .btn-upvote { background: #0F172A; border: 1px solid #334155; color: #F1F5F9; padding: 6px 10px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-upvote:hover { border-color: #38BDF8; color: #38BDF8; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-box { background: #1E293B; border: 1px solid #334155; border-radius: 12px; width: 540px; max-width: 90%; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .modal-title { font-size: 18px; font-weight: 800; color: #FFFFFF; }
+    .tier-option { border: 1px solid #334155; border-radius: 8px; padding: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .tier-option.selected { border-color: #F59E0B; background: rgba(245, 158, 11, 0.1); }
+    .btn-pay { background: #0D9488; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="brand">
+      <div class="brand-icon">&plus;</div>
+      <span>Clinical &amp; Healthcare Directory Engine</span>
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-btn active" onclick="switchView('clinics')">Verified Clinics &amp; Labs</button>
+      <button class="nav-btn" onclick="switchView('tools')">AI Healthcare Tools</button>
+      <button class="nav-btn" onclick="switchView('admin')">Admin Moderation</button>
+    </div>
+    <button class="btn-promote" onclick="openSponsorModal()">+ Promote Your Listing</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- VIEW 1: Verified Clinical Practices -->
+    <div id="view-clinics" class="view-panel">
+      <div class="hero-box">
+        <div class="hero-text">
+          <h1>Verified Clinical Practices &amp; Diagnostic Pathology Labs</h1>
+          <p>100% Modern Evidence-Based Medicine &bull; Automated Schema.org Structured Data</p>
+        </div>
+        <span class="hero-badge">&check; State Board Accredited</span>
+      </div>
+
+      <div style="margin: 16px 0; display: flex; gap: 10px;">
+        <input type="text" id="clinicSearch" placeholder="Search by doctor, clinic, or diagnostic test..." style="flex: 1; padding: 10px 14px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: white; font-size: 13px;" oninput="filterClinics()">
+        <select id="clinicFilter" style="padding: 10px 14px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: white; font-size: 13px;" onchange="filterClinics()">
+          <option value="ALL">All Specialties</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Pathology">Pathology &amp; Labs</option>
+          <option value="Pediatrics">Pediatrics</option>
+        </select>
+      </div>
+
+      <div class="card-grid" id="clinicGrid">
+        <!-- Card 1 (Featured Sponsor) -->
+        <div class="dir-card featured" data-specialty="Cardiology">
+          <span class="featured-tag">&star; Featured Sponsor</span>
+          <div class="dir-header">
+            <div>
+              <div class="dir-title">Metropolitan Cardiology &amp; Heart Rhythm Center</div>
+              <span class="dir-specialty">Cardiology &bull; Telehealth Available</span>
+            </div>
+          </div>
+          <p class="dir-desc">Comprehensive outpatient cardiology, resting 12-lead ECG telemetry, Holter monitoring, echocardiography, and lipid optimization.</p>
+          <div class="dir-meta">
+            <span>License: <strong>MED-CARDIO-84920</strong></span>
+            <button class="btn-action" onclick="alert('Viewing Schema.org JSON-LD for Metropolitan Cardiology!')">Inspect JSON-LD</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="dir-card" data-specialty="Pathology">
+          <div class="dir-header">
+            <div>
+              <div class="dir-title">Precision Hematology &amp; Diagnostic Pathology Labs</div>
+              <span class="dir-specialty">Diagnostic Pathology</span>
+            </div>
+          </div>
+          <p class="dir-desc">High-throughput clinical pathology: complete blood counts (CBC), fasting glucose, serum creatinine clearance, and hs-cTnI assays.</p>
+          <div class="dir-meta">
+            <span>License: <strong>LAB-CLIA-99201</strong></span>
+            <button class="btn-action" onclick="alert('Viewing Schema.org JSON-LD for Diagnostic Pathology!')">Inspect JSON-LD</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="dir-card" data-specialty="Pediatrics">
+          <div class="dir-header">
+            <div>
+              <div class="dir-title">Valley Pediatric &amp; Neonatal Care Center</div>
+              <span class="dir-specialty">Pediatrics &bull; Telehealth Available</span>
+            </div>
+          </div>
+          <p class="dir-desc">Evidence-based pediatric outpatient medicine, developmental milestone surveillance, immunization schedules, and acute illness triage.</p>
+          <div class="dir-meta">
+            <span>License: <strong>MED-PED-10293</strong></span>
+            <button class="btn-action" onclick="alert('Viewing Schema.org JSON-LD for Valley Pediatrics!')">Inspect JSON-LD</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: AI Healthcare Tools -->
+    <div id="view-tools" class="view-panel" style="display: none;">
+      <div class="hero-box">
+        <div class="hero-text">
+          <h1>AI Healthcare &amp; Developer Tools Directory</h1>
+          <p>Hacker News style gravity ranking &bull; Verified clinical AI microservices</p>
+        </div>
+        <span class="hero-badge" style="background: rgba(56, 189, 248, 0.2); border-color: #38BDF8; color: #38BDF8;">Trending Live</span>
+      </div>
+
+      <div class="card-grid" style="margin-top: 18px;">
+        <div class="dir-card">
+          <div class="dir-header">
+            <div>
+              <div class="dir-title">ClinPath-Vision AI</div>
+              <span class="dir-specialty">Pathology Vision</span>
+            </div>
+            <button class="btn-upvote" onclick="upvote(this, 142)">▲ <span class="v-count">142</span></button>
+          </div>
+          <p class="dir-desc">Deep learning model for automated histological tissue analysis and mitotic figure quantification.</p>
+          <div class="dir-meta">
+            <span>Stack: PyTorch &bull; FastAPI &bull; Docker</span>
+            <span style="color: #10B981; font-weight: 700;">Freemium API</span>
+          </div>
+        </div>
+
+        <div class="dir-card">
+          <div class="dir-header">
+            <div>
+              <div class="dir-title">CardioWave-ECG Synth</div>
+              <span class="dir-specialty">Clinical Cardiology AI</span>
+            </div>
+            <button class="btn-upvote" onclick="upvote(this, 98)">▲ <span class="v-count">98</span></button>
+          </div>
+          <p class="dir-desc">Parametric vector P-QRS-T electrocardiogram waveform synthesizer and arrhythmia detection edge API.</p>
+          <div class="dir-meta">
+            <span>Stack: Rust &bull; WebAssembly</span>
+            <span style="color: #10B981; font-weight: 700;">Open Source</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: Admin Moderation Desk -->
+    <div id="view-admin" class="view-panel" style="display: none;">
+      <div class="hero-box">
+        <div class="hero-text">
+          <h1>Directory Admin &amp; Moderation Desk</h1>
+          <p>Review new practitioner submissions &bull; Verification credential audit</p>
+        </div>
+        <span class="hero-badge" style="background: rgba(245, 158, 11, 0.2); border-color: #F59E0B; color: #F59E0B;">2 Pending</span>
+      </div>
+
+      <table style="width: 100%; border-collapse: collapse; margin-top: 18px; background: #1E293B; border-radius: 8px; overflow: hidden;">
+        <thead>
+          <tr style="background: #0F172A; text-align: left; font-size: 12px; color: #94A3B8;">
+            <th style="padding: 12px 16px;">Practice / Tool</th>
+            <th style="padding: 12px 16px;">Specialty</th>
+            <th style="padding: 12px 16px;">Registration ID</th>
+            <th style="padding: 12px 16px;">Status</th>
+            <th style="padding: 12px 16px;">Action</th>
+          </tr>
+        </thead>
+        <tbody style="font-size: 13px;">
+          <tr style="border-bottom: 1px solid #334155;">
+            <td style="padding: 12px 16px;">Summit Orthopedic &amp; Sports Medicine Clinic</td>
+            <td style="padding: 12px 16px;"><span class="dir-specialty">Orthopedics</span></td>
+            <td style="padding: 12px 16px; font-family: monospace;">MED-ORTHO-7721</td>
+            <td style="padding: 12px 16px;"><span style="color: #F59E0B; font-weight: 700;">Pending Audit</span></td>
+            <td style="padding: 12px 16px;">
+              <button class="btn-action" onclick="this.closest('tr').remove(); alert('Approved!')">Approve</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Promotion / Checkout Modal -->
+  <div id="sponsorModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-title">Promote Your Clinic or AI Tool</div>
+      <p style="font-size: 12px; color: #94A3B8;">Boost clinical patient inquiries or developer API traffic with instant placement.</p>
+
+      <div class="tier-option selected" onclick="selectTier(this, 9)">
+        <div>
+          <div style="font-weight: 800; color: #F59E0B;">Featured Sponsor ($9.00 / ~₹750 mo)</div>
+          <div style="font-size: 11px; color: #94A3B8;">Top category position &bull; Golden badge &bull; Direct links</div>
+        </div>
+        <div style="font-weight: 800; font-size: 16px;">$9/mo</div>
+      </div>
+
+      <div class="tier-option" onclick="selectTier(this, 19)">
+        <div>
+          <div style="font-weight: 800; color: #38BDF8;">Partner Spotlight Hero ($19.00 / ~₹1,599 mo)</div>
+          <div style="font-size: 11px; color: #94A3B8;">Homepage hero banner &bull; Dofollow backlink &bull; Monthly report</div>
+        </div>
+        <div style="font-weight: 800; font-size: 16px;">$19/mo</div>
+      </div>
+
+      <button class="btn-pay" onclick="completeSponsorship()">Complete Checkout &amp; Generate Instant Invoice</button>
+      <button style="background: transparent; border: none; color: #94A3B8; font-size: 11px; cursor: pointer;" onclick="closeSponsorModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    function switchView(view) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(p => p.style.display = 'none');
+      event.target.classList.add('active');
+      document.getElementById('view-' + view).style.display = 'block';
+    }
+
+    function filterClinics() {
+      const q = document.getElementById('clinicSearch').value.toLowerCase();
+      const spec = document.getElementById('clinicFilter').value;
+      const cards = document.querySelectorAll('#clinicGrid .dir-card');
+
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const s = c.getAttribute('data-specialty');
+        const matchQ = text.includes(q);
+        const matchS = (spec === 'ALL' || s === spec);
+        c.style.display = (matchQ && matchS) ? 'flex' : 'none';
+      });
+    }
+
+    function upvote(btn, count) {
+      const span = btn.querySelector('.v-count');
+      const cur = parseInt(span.innerText, 10);
+      span.innerText = cur + 1;
+      btn.style.color = '#38BDF8';
+      btn.disabled = true;
+    }
+
+    function openSponsorModal() {
+      document.getElementById('sponsorModal').classList.add('active');
+    }
+
+    function closeSponsorModal() {
+      document.getElementById('sponsorModal').classList.remove('active');
+    }
+
+    function selectTier(el, price) {
+      document.querySelectorAll('.tier-option').forEach(t => t.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function completeSponsorship() {
+      alert("Payment verified! Featured badge activated and electronic invoice generated.");
+      closeSponsorModal();
+    }
+  </script>
+</body>
+</html>

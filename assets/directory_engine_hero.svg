@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgHero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1120"/>
+      <stop offset="60%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#092B28"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="50%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgHero)"/>
+
+  <!-- Subtle Map / Grid Dots -->
+  <g fill="rgba(255,255,255,0.05)">
+    <circle cx="100" cy="80" r="2"/><circle cx="200" cy="80" r="2"/><circle cx="300" cy="80" r="2"/><circle cx="400" cy="80" r="2"/><circle cx="500" cy="80" r="2"/><circle cx="600" cy="80" r="2"/><circle cx="700" cy="80" r="2"/><circle cx="800" cy="80" r="2"/><circle cx="900" cy="80" r="2"/><circle cx="1000" cy="80" r="2"/><circle cx="1100" cy="80" r="2"/>
+    <circle cx="100" cy="180" r="2"/><circle cx="200" cy="180" r="2"/><circle cx="300" cy="180" r="2"/><circle cx="400" cy="180" r="2"/><circle cx="500" cy="180" r="2"/><circle cx="600" cy="180" r="2"/><circle cx="700" cy="180" r="2"/><circle cx="800" cy="180" r="2"/><circle cx="900" cy="180" r="2"/><circle cx="1000" cy="180" r="2"/><circle cx="1100" cy="180" r="2"/>
+    <circle cx="100" cy="280" r="2"/><circle cx="200" cy="280" r="2"/><circle cx="300" cy="280" r="2"/><circle cx="400" cy="280" r="2"/><circle cx="500" cy="280" r="2"/><circle cx="600" cy="280" r="2"/><circle cx="700" cy="280" r="2"/><circle cx="800" cy="280" r="2"/><circle cx="900" cy="280" r="2"/><circle cx="1000" cy="280" r="2"/><circle cx="1100" cy="280" r="2"/>
+    <circle cx="100" cy="380" r="2"/><circle cx="200" cy="380" r="2"/><circle cx="300" cy="380" r="2"/><circle cx="400" cy="380" r="2"/><circle cx="500" cy="380" r="2"/><circle cx="600" cy="380" r="2"/><circle cx="700" cy="380" r="2"/><circle cx="800" cy="380" r="2"/><circle cx="900" cy="380" r="2"/><circle cx="1000" cy="380" r="2"/><circle cx="1100" cy="380" r="2"/>
+    <circle cx="100" cy="480" r="2"/><circle cx="200" cy="480" r="2"/><circle cx="300" cy="480" r="2"/><circle cx="400" cy="480" r="2"/><circle cx="500" cy="480" r="2"/><circle cx="600" cy="480" r="2"/><circle cx="700" cy="480" r="2"/><circle cx="800" cy="480" r="2"/><circle cx="900" cy="480" r="2"/><circle cx="1000" cy="480" r="2"/><circle cx="1100" cy="480" r="2"/>
+  </g>
+
+  <!-- Category Badge -->
+  <g transform="translate(80, 70)">
+    <rect width="380" height="34" rx="17" fill="rgba(13, 148, 136, 0.15)" stroke="#0D9488" stroke-width="1"/>
+    <text x="190" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#2DD4BF" text-anchor="middle" letter-spacing="1">WAY #30 &bull; DIRECTORY SITES ENGINE</text>
+  </g>
+
+  <!-- Title -->
+  <text x="80" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Production Directory Engine</text>
+  <text x="80" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" fill="url(#tealGrad)" letter-spacing="-0.5">with Paid Featured Listings</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="400" fill="#94A3B8">
+    Verified clinical practices, diagnostic labs, AI healthcare tools &amp; automated sponsor checkout.
+  </text>
+
+  <!-- Feature Cards Container -->
+  <g transform="translate(80, 280)">
+    <!-- Card 1: Clinical Directory -->
+    <g transform="translate(0, 0)">
+      <rect width="320" height="230" rx="12" fill="#1E293B" stroke="rgba(13, 148, 136, 0.4)" stroke-width="1.5"/>
+      <rect width="320" height="6" rx="3" fill="#0D9488"/>
+      <text x="20" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">Pack 1: Clinical Directory</text>
+      <text x="20" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#2DD4BF">Verified Practices &amp; Labs</text>
+      <text x="20" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Schema.org Medical JSON-LD</text>
+      <text x="20" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Specialty Search (Cardio, Peds)</text>
+      <text x="20" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Accreditation Intake Pipeline</text>
+      <text x="20" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; 100% Modern Evidence-Based</text>
+      <rect x="20" y="190" width="130" height="24" rx="6" fill="rgba(13, 148, 136, 0.2)"/>
+      <text x="85" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#2DD4BF" text-anchor="middle">Single $9.00 USD</text>
+    </g>
+
+    <!-- Card 2: AI Tools Directory -->
+    <g transform="translate(345, 0)">
+      <rect width="320" height="230" rx="12" fill="#1E293B" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5"/>
+      <rect width="320" height="6" rx="3" fill="#38BDF8"/>
+      <text x="20" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">Pack 2: AI Tools Directory</text>
+      <text x="20" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#38BDF8">Upvoting &amp; Comparison Engine</text>
+      <text x="20" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Hacker News Gravity Ranking</text>
+      <text x="20" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Anti-Gaming Rate Limiter</text>
+      <text x="20" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Tool A vs Tool B Comparison</text>
+      <text x="20" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Live XML Sitemaps &amp; RSS Feed</text>
+      <rect x="20" y="190" width="130" height="24" rx="6" fill="rgba(56, 189, 248, 0.2)"/>
+      <text x="85" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38BDF8" text-anchor="middle">Single $9.00 USD</text>
+    </g>
+
+    <!-- Card 3: Monetization & Checkout -->
+    <g transform="translate(690, 0)">
+      <rect width="350" height="230" rx="12" fill="#1E293B" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5"/>
+      <rect width="350" height="6" rx="3" fill="url(#goldGrad)"/>
+      <text x="20" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">Pack 3: Monetization Kit</text>
+      <text x="20" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#FBBF24">Featured Checkout &amp; Invoices</text>
+      <text x="20" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Paid Featured Listings ($9 / $19)</text>
+      <text x="20" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Stripe / PayPal Webhook Fulfiller</text>
+      <text x="20" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Automated PDF/HTML Invoicing</text>
+      <text x="20" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94A3B8">&bull; Admin Moderation &amp; Approval Desk</text>
+      <rect x="20" y="190" width="160" height="24" rx="6" fill="rgba(245, 158, 11, 0.2)"/>
+      <text x="100" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">Master Suite $19 USD</text>
+    </g>
+  </g>
+
+  <!-- Gold Verified Shield Badge graphic on Right -->
+  <g transform="translate(1030, 90)">
+    <circle cx="50" cy="50" r="44" fill="#0F172A" stroke="#F59E0B" stroke-width="3" filter="url(#glow)"/>
+    <path d="M 50 24 L 72 34 L 72 58 C 72 72 50 82 50 82 C 50 82 28 72 28 58 L 28 34 Z" fill="none" stroke="#FBBF24" stroke-width="3"/>
+    <path d="M 40 52 L 48 60 L 62 44" fill="none" stroke="#2DD4BF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Footer Notice -->
+  <text x="80" y="590" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#64748B">
+    RFC 2606 Reserved Domains &bull; Zero Out-of-Pocket Cost &bull; UPI milind.chatrabhuji@okhdfcbank &bull; PayPal milind.chatrabhuji@gmail.com
+  </text>
+</svg>

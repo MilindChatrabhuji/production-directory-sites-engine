@@ -1,0 +1,14 @@
+{
+  "name": "directory-monetization-kit",
+  "version": "1.0.0",
+  "description": "Featured listings checkout, automated invoicing, webhook fulfillment, and moderation desk.",
+  "main": "dist/featured_checkout.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Milind Chatrabhuji",
+  "license": "Commercial",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

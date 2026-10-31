@@ -1,0 +1,20 @@
+{
+  "name": "clinical-directory-engine",
+  "version": "1.0.0",
+  "description": "Production Cloudflare Workers directory engine for verified outpatient clinical practices and diagnostic labs.",
+  "main": "dist/worker.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "wrangler deploy"
+  },
+  "author": "Milind Chatrabhuji",
+  "license": "Commercial",
+  "dependencies": {
+    "itty-router": "^5.0.18"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.80.0"
+  }
+}
